@@ -119,6 +119,10 @@ public class PlayPanel extends JPanel {
         return clockLabel;
     }
 
+    public BackgroundLabel getBackgroundLabel() {
+        return backgroundLabel;
+    }
+
     public JTextField[][] getJtx() {
         return jtx;
     }

@@ -27,6 +27,7 @@ public class ResumeButton extends JButton implements ActionListener {
         game.startTimer();
         frame.getPausePanel().setVisible(false);
         frame.setContentPane(frame.getPlayPanel());
+        frame.getPlayPanel().add(frame.getPlayPanel().getBackgroundLabel());
         frame.getPlayPanel().setVisible(true);
     }
 }
