@@ -6,6 +6,7 @@ import gui.Gui;
 import gui.buttons.*;
 import gui.labels.BackgroundLabel;
 import gui.labels.ClockLabel;
+import gui.buttons.SolveButton;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -23,6 +24,7 @@ public class PlayPanel extends JPanel {
     private HintButton hintButton;
     private ResetButton resetButton;
     private SolutionButton solutionButton;
+    private SolveButton solveButton;
     private NewSudokuButton newSudokuButton;
     private SaveQuitButton saveQuitButton;
     private QuitButton quitButton;
@@ -57,6 +59,7 @@ public class PlayPanel extends JPanel {
         this.hintButton = new HintButton();
         this.resetButton = new ResetButton();
         this.solutionButton = new SolutionButton();
+        this.solveButton = new SolveButton();
         this.newSudokuButton = new NewSudokuButton();
         this.saveQuitButton = new SaveQuitButton();
         this.quitButton = new QuitButton();
@@ -73,6 +76,7 @@ public class PlayPanel extends JPanel {
         this.add(hintButton);
         this.add(resetButton);
         this.add(solutionButton);
+        this.add(solveButton);
         this.add(newSudokuButton);
         this.add(saveQuitButton);
         this.add(quitButton);
@@ -125,6 +129,18 @@ public class PlayPanel extends JPanel {
 
     public JTextField[][] getJtx() {
         return jtx;
+    }
+
+    public int getFieldValue(int row, int column) {
+        if(jtx[row][column].getText().equals("")) {
+            return -1;
+        }
+        return Integer.parseInt(jtx[row][column].getText());
+    }
+
+    public void setFieldValue(int row, int column, String value) {
+        jtx[row][column].setText(value);
+        jtx[row][column].setEnabled(false);
     }
 
     public void clearField(int row, int column) {

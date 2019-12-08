@@ -112,9 +112,9 @@ public class Game {
         return false;
     }
 
-    private void endGame() {
+    public void endGame() {
         clearBoard();
-        stopTimer();
+        resetTimer();
         score.calculateResult(difficulty, mode, 3 - hint.getAmountOfHints(), timer.getTime());
     }
 
@@ -163,6 +163,62 @@ public class Game {
                 gui.getFrame().getPlayPanel().showSolutionToField(i, j, board.convert(fields[i][j].getValueOfField(), mode));
             }
         }
+    }
+
+    public boolean solve() {
+        for (int i = 0; i < board.getSize(); i++) {
+            for (int j = 0; j < board.getSize(); j++) {
+                // we search an empty cell
+                if (gui.getFrame().getPlayPanel().getFieldValue(i, j) == -1) {
+                    for (int number = 1; number <= board.getSize(); number++) {
+                        if (isOk(i, j, number)) {
+                            gui.getFrame().getPlayPanel().setFieldValue(i, j, String.valueOf(number));
+                            if (solve()) {
+                                return true;
+                            } else {
+                                gui.getFrame().getPlayPanel().setFieldValue(i, j, "");
+                            }
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isInRow(int row, int number) {
+        for (int i = 0; i < board.getSize(); i++)
+            if (gui.getFrame().getPlayPanel().getFieldValue(row, i) == number)
+                return true;
+
+        return false;
+    }
+
+    private boolean isInCol(int col, int number) {
+        for (int i = 0; i < board.getSize(); i++)
+            if (gui.getFrame().getPlayPanel().getFieldValue(i, col) == number)
+                return true;
+
+        return false;
+    }
+
+    private boolean isInBox(int row, int col, int number) {
+        int r = (int) (row - row % Math.sqrt(board.getSize()));
+        int c = (int) (col - col % Math.sqrt(board.getSize()));
+
+        for (int i = r; i < r + 3; i++)
+            for (int j = c; j < c + 3; j++)
+                if (gui.getFrame().getPlayPanel().getFieldValue(i, j) == number)
+                    return true;
+
+        return false;
+    }
+
+    private boolean isOk(int row, int col, int number) {
+        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInBox(row, col, number);
     }
 
     public void reset() {

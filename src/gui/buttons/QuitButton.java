@@ -18,7 +18,7 @@ public class QuitButton extends JButton implements ActionListener {
         super("Quit");
         this.frame = Gui.getGuiInstance().getFrame();
         this.game = Game.getGameInstance();
-        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 390, 200, 50);
+        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 450, 200, 50);
         this.setBackground(new Color(228, 47, 27));
         this.setToolTipText("Quit to main menu");
         this.addActionListener(this::actionPerformed);
@@ -38,8 +38,7 @@ public class QuitButton extends JButton implements ActionListener {
             frame.getPlayPanel().getSaveQuitButton().setEnabled(true);
             frame.setContentPane(frame.getMenuPanel());
             frame.getMenuPanel().setVisible(true);
-            game.clearBoard();
-            game.resetTimer();
+            game.endGame();
         }
     }
 }

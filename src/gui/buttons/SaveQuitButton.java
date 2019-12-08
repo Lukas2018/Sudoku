@@ -19,7 +19,7 @@ public class SaveQuitButton extends JButton implements ActionListener {
         super("Save and quit");
         this.frame = Gui.getGuiInstance().getFrame();
         this.game = Game.getGameInstance();
-        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 330, 200, 50);
+        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 390, 200, 50);
         this.setBackground(new Color(249, 143, 76));
         this.setToolTipText("Save the progress and quit");
         this.addActionListener(this::actionPerformed);
@@ -43,7 +43,6 @@ public class SaveQuitButton extends JButton implements ActionListener {
 
         frame.setContentPane(frame.getMenuPanel());
         frame.getMenuPanel().setVisible(true);
-        game.clearBoard();
-        game.resetTimer();
+        game.endGame();
     }
 }

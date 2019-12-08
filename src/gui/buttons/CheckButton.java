@@ -22,7 +22,7 @@ public class CheckButton extends JButton implements ActionListener {
         this.game = Game.getGameInstance();
         this.database = Database.getDatabaseInstance();
         this.setBackground(new Color(120, 195, 101));
-        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 270, 200, 50);
+        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 330, 200, 50);
         this.setToolTipText("Click to check your solving");
         this.addActionListener(this::actionPerformed);
     }

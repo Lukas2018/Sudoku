@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
-    private int size;
+    public static int size;
     private Field[][] fields;
 
     public Board(int size)

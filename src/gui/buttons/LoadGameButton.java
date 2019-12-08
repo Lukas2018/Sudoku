@@ -44,6 +44,7 @@ public class LoadGameButton extends JButton implements ActionListener {
                 frame.getPlayPanel().getHintButton().setEnabled(false);
             game.loadTimer();
             frame.setContentPane(frame.getPlayPanel());
+            frame.getPlayPanel().add(frame.getPlayPanel().getBackgroundLabel());
             frame.getPlayPanel().setVisible(true);
         } catch (FileNotFoundException e1) {
             // TODO Auto-generated catch block

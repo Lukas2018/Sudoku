@@ -19,7 +19,7 @@ public class NewSudokuButton extends JButton implements ActionListener {
         super("New sudoku");
         this.frame = Gui.getGuiInstance().getFrame();
         this.game = Game.getGameInstance();
-        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 210, 200, 50);
+        this.setBounds(frame.getWidth() - 400, (frame.getHeight() / 4) + 270, 200, 50);
         this.setBackground(new Color(219, 225, 204));
         this.setToolTipText("Generate new Sudoku instead of this one");
         this.addActionListener(this::actionPerformed);
