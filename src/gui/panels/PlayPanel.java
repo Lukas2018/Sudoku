@@ -131,11 +131,8 @@ public class PlayPanel extends JPanel {
         return jtx;
     }
 
-    public int getFieldValue(int row, int column) {
-        if(jtx[row][column].getText().equals("")) {
-            return -1;
-        }
-        return Integer.parseInt(jtx[row][column].getText());
+    public String getFieldValue(int row, int column) {
+        return jtx[row][column].getText();
     }
 
     public void setFieldValue(int row, int column, String value) {

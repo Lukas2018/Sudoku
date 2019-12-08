@@ -168,11 +168,13 @@ public class Game {
     public boolean solve() {
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
-                // we search an empty cell
-                if (gui.getFrame().getPlayPanel().getFieldValue(i, j) == -1) {
+                if (gui.getFrame().getPlayPanel().getFieldValue(i, j).equals("")) {
                     for (int number = 1; number <= board.getSize(); number++) {
-                        if (isOk(i, j, number)) {
-                            gui.getFrame().getPlayPanel().setFieldValue(i, j, String.valueOf(number));
+                        int num = number;
+                        if(mode.equals("Hex"))
+                            num = num - 1;
+                        if (isOk(i, j, num)) {
+                            gui.getFrame().getPlayPanel().setFieldValue(i, j, Board.convert(num, mode));
                             if (solve()) {
                                 return true;
                             } else {
@@ -191,27 +193,27 @@ public class Game {
 
     private boolean isInRow(int row, int number) {
         for (int i = 0; i < board.getSize(); i++)
-            if (gui.getFrame().getPlayPanel().getFieldValue(row, i) == number)
+            if ((gui.getFrame().getPlayPanel().getFieldValue(row, i)).equals(Board.convert(number, mode)))
                 return true;
 
         return false;
     }
 
-    private boolean isInCol(int col, int number) {
+    private boolean isInCol(int column, int number) {
         for (int i = 0; i < board.getSize(); i++)
-            if (gui.getFrame().getPlayPanel().getFieldValue(i, col) == number)
+            if ((gui.getFrame().getPlayPanel().getFieldValue(i, column)).equals(Board.convert(number, mode)))
                 return true;
 
         return false;
     }
 
-    private boolean isInBox(int row, int col, int number) {
+    private boolean isInBox(int row, int column, int number) {
         int r = (int) (row - row % Math.sqrt(board.getSize()));
-        int c = (int) (col - col % Math.sqrt(board.getSize()));
+        int c = (int) (column - column % Math.sqrt(board.getSize()));
 
-        for (int i = r; i < r + 3; i++)
-            for (int j = c; j < c + 3; j++)
-                if (gui.getFrame().getPlayPanel().getFieldValue(i, j) == number)
+        for (int i = r; i < r + Math.sqrt(board.getSize()); i++)
+            for (int j = c; j < c + Math.sqrt(board.getSize()); j++)
+                if ((gui.getFrame().getPlayPanel().getFieldValue(i, j)).equals(Board.convert(number, mode)))
                     return true;
 
         return false;
