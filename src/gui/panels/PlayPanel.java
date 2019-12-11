@@ -102,6 +102,9 @@ public class PlayPanel extends JPanel {
     public ResetButton getResetButton() {
         return resetButton;
     }
+    public SolveButton getSolveButton() {
+        return solveButton;
+    }
 
     public SolutionButton getSolutionButton() {
         return solutionButton;
@@ -138,6 +141,7 @@ public class PlayPanel extends JPanel {
     public void setFieldValue(int row, int column, String value) {
         jtx[row][column].setText(value);
         jtx[row][column].setEnabled(false);
+        jtx[row][column].setDisabledTextColor(new Color(96, 96, 96));
     }
 
     public void clearField(int row, int column) {
@@ -147,6 +151,7 @@ public class PlayPanel extends JPanel {
 
     public void showSolutionToField(int row, int column, String value) {
         jtx[row][column].setEnabled(false);
+        jtx[row][column].setBackground(Color.WHITE);
         jtx[row][column].setDisabledTextColor(new Color(96, 96, 96));
         jtx[row][column].setText(value);
     }
@@ -157,6 +162,13 @@ public class PlayPanel extends JPanel {
         }
     }
 
+    public void blockFields(int size) {
+        for(int i=0; i < size; i++) {
+            for(int j=0; j < size; j++){
+                jtx[i][j].setEnabled(false);
+            }
+        }
+    }
     public void showCollisionOnBoard(int row, int column, Board board) {
         if(jtx[row][column].getText().equals("")) {
             jtx[row][column].setBackground(Color.white);

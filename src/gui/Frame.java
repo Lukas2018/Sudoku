@@ -1,5 +1,6 @@
 package gui;
 
+import game.Game;
 import gui.panels.*;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class Frame extends JFrame {
                 if (PromptResult == JOptionPane.YES_OPTION) {
                     dispose();
                     // db.disconnect();
-                    // executor.shutdown();
+                    Game.getGameInstance().shutDownExecutor();
                 }
             }
         });

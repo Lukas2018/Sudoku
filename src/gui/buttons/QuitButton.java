@@ -36,8 +36,10 @@ public class QuitButton extends JButton implements ActionListener {
             frame.getPlayPanel().getResetButton().setEnabled(true);
             frame.getPlayPanel().getSolutionButton().setEnabled(true);
             frame.getPlayPanel().getSaveQuitButton().setEnabled(true);
+            frame.getPlayPanel().getSolveButton().setEnabled(true);
             frame.setContentPane(frame.getMenuPanel());
             frame.getMenuPanel().setVisible(true);
+            frame.getPlayPanel().getSolveButton().stopSwingWorker();
             game.endGame();
         }
     }

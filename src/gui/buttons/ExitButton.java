@@ -27,5 +27,6 @@ public class ExitButton extends JButton implements ActionListener {
         frame.dispose();
         // Database.getDatabaseInstance().disconnect();
         game.shutDownExecutor();
+        frame.getPlayPanel().getSolveButton().stopSwingWorker();
     }
 }

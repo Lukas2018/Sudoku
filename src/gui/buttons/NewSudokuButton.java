@@ -34,6 +34,7 @@ public class NewSudokuButton extends JButton implements ActionListener {
         frame.getPlayPanel().getResetButton().setEnabled(true);
         frame.getPlayPanel().getSolutionButton().setEnabled(true);
         frame.getPlayPanel().getNewSudokuButton().setEnabled(false);
+        frame.getPlayPanel().getSolveButton().setEnabled(true);
         frame.getPlayPanel().getSaveQuitButton().setEnabled(true);
         game.clearBoard();
         if (game.getMode().equals("Hex")) {

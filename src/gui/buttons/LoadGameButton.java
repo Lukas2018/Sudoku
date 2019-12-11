@@ -39,8 +39,8 @@ public class LoadGameButton extends JButton implements ActionListener {
             line = br.readLine();
             br.close();
             game.startLoad();
-            game.getHint().setAmountOfHints(Integer.parseInt(line));
-            if (game.getHint().getAmountOfHints() == 0)
+            game.setHints(Integer.parseInt(line));
+            if (Integer.parseInt(line) == 0)
                 frame.getPlayPanel().getHintButton().setEnabled(false);
             game.loadTimer();
             frame.setContentPane(frame.getPlayPanel());

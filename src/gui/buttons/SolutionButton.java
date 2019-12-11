@@ -31,6 +31,7 @@ public class SolutionButton extends JButton implements ActionListener {
         frame.getPlayPanel().getHintButton().setEnabled(false);
         frame.getPlayPanel().getResetButton().setEnabled(false);
         frame.getPlayPanel().getSolutionButton().setEnabled(false);
+        frame.getPlayPanel().getSolveButton().setEnabled(false);
         frame.getPlayPanel().getSaveQuitButton().setEnabled(false);
         game.stopTimer();
     }

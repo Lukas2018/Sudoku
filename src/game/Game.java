@@ -82,6 +82,10 @@ public class Game {
         clockRun();
     }
 
+    public void setHints(int value) {
+        hint.setAmountOfHints(value);
+    }
+
     public void startTimer() {
         timer.startTimer();
     }
@@ -105,7 +109,7 @@ public class Game {
     }
 
     public boolean checkIsGameEnded() {
-        if(getBoard().checkFields(gui.getFrame().getPlayPanel().getJtx(), getMode())){
+        if(board.checkFields(gui.getFrame().getPlayPanel().getJtx(), getMode())){
             endGame();
             return true;
         }
@@ -145,16 +149,8 @@ public class Game {
         }
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public Hint getHint() {
-        return hint;
-    }
-
-    public Score getScore() {
-        return score;
+    public int getScore() {
+        return score.getResult();
     }
 
     public void showSolution() {
@@ -166,6 +162,8 @@ public class Game {
     }
 
     public boolean solve() {
+        reset();
+        gui.getFrame().getPlayPanel().blockFields(board.getSize());
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
                 if (gui.getFrame().getPlayPanel().getFieldValue(i, j).equals("")) {
@@ -173,6 +171,11 @@ public class Game {
                         int num = number;
                         if(mode.equals("Hex"))
                             num = num - 1;
+                        try {
+                            Thread.sleep(5);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         if (isOk(i, j, num)) {
                             gui.getFrame().getPlayPanel().setFieldValue(i, j, Board.convert(num, mode));
                             if (solve()) {

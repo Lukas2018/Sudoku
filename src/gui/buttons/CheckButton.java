@@ -35,8 +35,8 @@ public class CheckButton extends JButton implements ActionListener {
             frame.setContentPane(frame.getEndGamePanel());
             frame.getEndGamePanel().setVisible(true);
             // database.check
-            if (Database.getDatabaseInstance().isInTop(game.getMode(), game.getScore().getResult())) {
-                Database.getDatabaseInstance().saveToDatabase(game.getMode(), game.getDifficulty(), game.getScore().getResult());
+            if (Database.getDatabaseInstance().isInTop(game.getMode(), game.getScore())) {
+                Database.getDatabaseInstance().saveToDatabase(game.getMode(), game.getDifficulty(), game.getScore());
             }
         } else {
             game.showCollision();

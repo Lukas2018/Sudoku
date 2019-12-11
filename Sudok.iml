@@ -54,5 +54,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jdbc" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/jar_files/jbehave-core-4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
